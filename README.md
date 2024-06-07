@@ -7,15 +7,14 @@
 1. install dependencies
 
     ```shell
-    npm install --save-dev @babel/core @babel/preset-env @babel/preset-react babel-loader
-    npm install --save-dev webpack webpack-cli webpack-dev-server video.js
+    npm install
     ```
 
 2. prepare videos
 
 3. list path of videos in local_video_paths.txt
 
-4. run `npm run build`
+4. run `make build`
 
 ## run
 
