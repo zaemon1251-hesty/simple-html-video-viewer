@@ -1,5 +1,7 @@
 # Simple Video Player Web View
 
+![sample](docs/preview.png "sample")
+
 ## install
 
 1. install dependencies
