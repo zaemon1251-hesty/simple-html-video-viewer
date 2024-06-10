@@ -33,6 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+
+    document.getElementById('rewind-button').addEventListener('click', function() {
+        const videoElement = document.getElementById('my-video');
+        if (videoElement) {
+            videoElement.currentTime = Math.max(0, videoElement.currentTime - 10);
+        }
+    });
+
+    document.getElementById('forward-button').addEventListener('click', function() {
+        const videoElement = document.getElementById('my-video');
+        if (videoElement) {
+            videoElement.currentTime = Math.min(videoElement.duration, videoElement.currentTime + 10);
+        }
+    });
 });
 
 function parseTimeInput(input) {
