@@ -1,4 +1,6 @@
-# Simple Video Player Web View
+# Simple Video Viewer
+
+a single html page for viewing local videos
 
 ![sample](docs/preview.png "sample")
 
