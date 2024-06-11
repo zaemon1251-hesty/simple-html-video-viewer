@@ -3,19 +3,23 @@ import { videoPaths } from './videoPaths';
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-button').addEventListener('click', function() {
         const query = document.getElementById('search-bar').value.toLowerCase();
-        const videoPath = videoPaths.find(path => path.toLowerCase().includes(query));
+        const results = videoPaths.filter(path => path.toLowerCase().includes(query));
+        
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
 
-        if (videoPath) {
-            const videoElement = document.getElementById('my-video');
-            const sourceElement = document.getElementById('video-source');
-            sourceElement.src = videoPath;
-            videoElement.load();
+        results.forEach((path, _) => {
+            const resultItem = document.createElement('div');
+            resultItem.textContent = path.split('SoccerNet_in_lrlab')[1];
+            resultItem.className = 'result-item';
+            resultItem.addEventListener('click', () => {
+                selectVideo(path);
+            });
+            resultsContainer.appendChild(resultItem);
+        });
 
-            // Display the current match path
-            const matchPath = videoPath.split('SoccerNet_in_lrlab')[1];
-            document.getElementById('current-match').textContent = matchPath;
-        } else {
-            alert('Video not found');
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<div>No results found</div>';
         }
     });
 
@@ -48,6 +52,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+function selectVideo(videoPath) {
+    // (event trigger) Load the selected video
+    const videoElement = document.getElementById('my-video');
+    const sourceElement = document.getElementById('video-source');
+    sourceElement.src = videoPath;
+    videoElement.load();
+
+    // Display the current match path
+    const matchPath = videoPath.split('SoccerNet_in_lrlab')[1];
+    document.getElementById('current-match').textContent = matchPath;
+}
 
 function parseTimeInput(input) {
     // Parse time in the format MM:SS or MM:SS:MS

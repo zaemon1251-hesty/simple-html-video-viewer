@@ -31,7 +31,7 @@
             font-size: 16px;
         }
 
-        #search-button, #jump-button, #rewind-button, #forward-button {
+        #search-button, #time-input, #jump-button, #rewind-button, #forward-button {
             padding: 10px;
             font-size: 16px;
         }
@@ -44,6 +44,28 @@
         #time-container {
             margin: 20px;
         }
+        
+        #results {
+            margin: 20px;
+            width: 80%;
+            max-width: 800px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .result-item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+        }
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        .result-item:hover {
+            background-color: #e9e9e9;
+        }
+
     </style>
 </head>
 <body>
@@ -51,6 +73,7 @@
         <input type="text" id="search-bar" placeholder="Enter video name or path">
         <button id="search-button">Search</button>
     </div>
+    <div id="results"></div>
     <div id="current-match"></div>
     <div id="video-container">
         <video id="my-video" class="video-js" controls preload="auto" width="1000"  data-setup="{}">
