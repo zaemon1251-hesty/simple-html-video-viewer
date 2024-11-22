@@ -16,7 +16,7 @@ a single html page for viewing local videos
 
 3. list path of videos in local_video_paths.txt
 
-4. run `make build`
+4. run `npm run build`
 
 ## run
 

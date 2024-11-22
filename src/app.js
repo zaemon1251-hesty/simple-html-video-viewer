@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         results.forEach((path, _) => {
             const resultItem = document.createElement('div');
-            resultItem.textContent = path.split('SoccerNet_in_lrlab')[1];
+            resultItem.textContent = path.split('SoccerNet_in_lrlab/')[1];
             resultItem.className = 'result-item';
             resultItem.addEventListener('click', () => {
                 selectVideo(path);
@@ -56,6 +56,21 @@ function selectVideo(videoPath) {
     // (event trigger) Load the selected video
     const videoElement = document.getElementById('my-video');
     const sourceElement = document.getElementById('video-source');
+    const trackElement = videoElement.querySelector('track');
+
+    let vttPath = "";
+    if (videoPath.includes("1_224p.mkv")) {
+        vttPath = videoPath.replace("1_224p.mkv", "1_asr.vtt");
+    } else if (videoPath.includes("1_720p.mkv")) {
+        vttPath = videoPath.replace("1_720p.mkv", "1_asr.vtt");
+    } else if (videoPath.includes("2_224p.mkv")) {
+        vttPath = videoPath.replace("2_224p.mkv", "2_asr.vtt");
+    } else if (videoPath.includes("2_720p.mkv")) {
+        vttPath = videoPath.replace("2_720p.mkv", "2_asr.vtt");
+    }
+    
+    trackElement.src = vttPath;
+
     sourceElement.src = videoPath;
     videoElement.load();
 
