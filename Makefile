@@ -1,7 +1,7 @@
 .PHONY: prepare build install
 
 prepare:
-	sshfs peter:/raid_elmo/home/lr/moriy/SoccerNet ./SoccerNet_in_lrlab -o volname=userdocs,reconnect,IdentityFile=/Users/heste/.ssh/peter
+	sshfs peter:/raid_elmo/home/lr/moriy/SoccerNet ./SoccerNet -o volname=userdocs,reconnect,IdentityFile=/Users/heste/.ssh/peter
 
 install:
 	npm install

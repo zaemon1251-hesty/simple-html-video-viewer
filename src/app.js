@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('search-button').addEventListener('click', function() {
         const query = document.getElementById('search-bar').value.toLowerCase();
         const results = videoPaths.filter(path => path.toLowerCase().includes(query));
-        
+
         const resultsContainer = document.getElementById('results');
         resultsContainer.innerHTML = '';
 
         results.forEach((path, _) => {
             const resultItem = document.createElement('div');
-            resultItem.textContent = path.split('SoccerNet_in_lrlab/')[1];
+            resultItem.textContent = path.split('SoccerNet/')[1];
             resultItem.className = 'result-item';
             resultItem.addEventListener('click', () => {
                 selectVideo(path);
@@ -68,14 +68,14 @@ function selectVideo(videoPath) {
     } else if (videoPath.includes("2_720p.mkv")) {
         vttPath = videoPath.replace("2_720p.mkv", "2_asr.vtt");
     }
-    
+
     trackElement.src = vttPath;
 
     sourceElement.src = videoPath;
     videoElement.load();
 
     // Display the current match path
-    const matchPath = videoPath.split('SoccerNet_in_lrlab')[1];
+    const matchPath = videoPath.split('SoccerNet/')[1];
     document.getElementById('current-match').textContent = matchPath;
 }
 
